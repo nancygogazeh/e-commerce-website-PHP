@@ -3,10 +3,10 @@ include "./includes/header.php";
 ?>
 <div class="container-fluid bg-light h-100">
     <div class="container text-center ">
-        <h1 style="font-size: 64px;" class="p-5">Cart</h1>
+        <h1 style="font-size: 64px; color:#54595f;" class="p-5">Cart</h1>
 
     </div>
-    <table class="table cart">
+    <table class="table cart align-middle ">
         <thead class="bg-white">
             <tr>
                 <th colspan="2"></th>
@@ -18,12 +18,14 @@ include "./includes/header.php";
         </thead>
         <tbody>
             <tr>
-                <td>X</td>
-                <td>
-                    <img src="https://via.placeholder.com/150" alt="" srcset="">
+                <td class="product-remove">
+                    <i class="bi bi-x-circle"></i>
                 </td>
                 <td>
-                    <p>Book name</p>
+                    <img src="https://via.placeholder.com/150" alt="book image" srcset="">
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">Book name</a>
                 </td>
                 <td>
                     <bdi>
@@ -31,7 +33,7 @@ include "./includes/header.php";
                     </bdi>
                 </td>
                 <td>
-                    <input type="number" class="input-group-text">
+                    <input type="number" class="input-group-text ms-auto" min="0">
                 </td>
                 <td>
                     <bdi>
@@ -39,20 +41,31 @@ include "./includes/header.php";
                     </bdi>
                 </td>
             </tr>
+            <tr>
+                <td colspan="6 ">
+                    <div class="coupon-section ">
+                        <div class="apply-coupon">
+                            <input type="text" class="me-2">
+                            <button class="ms-auto cart-btn">Apply Coupon</button>
+                        </div>
+                        <div class="update-cart">
+                            <button class="cart-btn">Update Cart</button>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
         </tbody>
-        <tfoot>
-            <td colspan="6">
-                <div class="d-flex mb-3">
-                    <div class=""><input type="text" class="input-group-text  me-3"></div>
-                    <div class=""> <button class="btn btn-success ">Apply Coupon</button></div>
-                    <div class="ms-auto"><button class="btn btn-success ">Update Cart</button></div>
-                </div>
-            </td>
-        </tfoot>
+        <!-- <div class=" col-md-3 row">
+            <input type="text" class="input-group-text  col-md-6">
+            <button class="btn btn-success ms-auto col-md-6">Apply Coupon</button>
+        </div>
+ -->
+
     </table>
     <div class="container-fluid my-5">
         <div class="row">
-            <table class="col-4 ms-auto table" style="width:40%;">
+            <table class="col-4 ms-auto table  table-bordered cart-totals">
                 <thead>
                     <tr class="bg-white">
                         <th colspan="2">
@@ -77,9 +90,9 @@ include "./includes/header.php";
                     </tr>
                     <tr>
                         <td colspan="2">
-                            
-                            <div class="btn btn-success w-100 mx-auto">Checkout</div>
-                            
+
+                            <div class="cart-btn w-100">Checkout</div>
+
                         </td>
                     </tr>
                 </tbody>
