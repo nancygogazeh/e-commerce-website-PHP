@@ -8,7 +8,7 @@ include "./includes/header.php";
                 <div class="col-12">
                     <form action="" method="get" class="d-flex gap-2 ">
                         <input type="text" name="" id="" placeholder="Search products.." class="w-100">
-                        <button type="submit" class="btn">
+                        <button type="submit" class="btn btn-success">
                             <i class="bi bi-caret-right-fill"></i>
                         </button>
                     </form>
@@ -35,11 +35,13 @@ include "./includes/header.php";
         <div class="col-8">
 
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://i.imgur.com/TbtwkyW.jpg" width="250">
+                            <img src="https://via.placeholder.com/250
+
+C/O https://placeholder.com/">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -54,7 +56,9 @@ include "./includes/header.php";
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://i.imgur.com/TbtwkyW.jpg" width="250">
+                            <img src="https://via.placeholder.com/250
+
+C/O https://placeholder.com/" class="image-fluid">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -67,21 +71,8 @@ include "./includes/header.php";
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://i.imgur.com/TbtwkyW.jpg" width="250">
-                        </div>
-                        <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
-                            <div class="my-2 fs-4">category</div>
-                        </div>
-                        <div class="cart-btn w-100 price">ADD TO CART</div>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="card h-100 justify-content-between">
-                        <div class="text-center">
-                            <img src="https://i.imgur.com/TbtwkyW.jpg" width="250">
+                            <img src="https://via.placeholder.com/250
+C/O https://placeholder.com/">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -95,7 +86,25 @@ include "./includes/header.php";
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://i.imgur.com/TbtwkyW.jpg" width="250">
+                            <img src="https://via.placeholder.com/250
+
+C/O https://placeholder.com/">
+                        </div>
+                        <div class="text-center">
+                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <div class="my-2 fs-4">category</div>
+                        </div>
+                        <div class="cart-btn w-100 price">ADD TO CART</div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card h-100 justify-content-between">
+                        <div class="text-center">
+                            <img src="https://via.placeholder.com/250
+
+C/O https://placeholder.com/">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -108,7 +117,9 @@ include "./includes/header.php";
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://i.imgur.com/TbtwkyW.jpg" width="250">
+                            <img src="https://via.placeholder.com/250
+
+C/O https://placeholder.com/">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
