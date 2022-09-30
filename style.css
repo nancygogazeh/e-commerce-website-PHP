@@ -195,3 +195,9 @@ table {
     }
 
 }
+
+/* products */
+
+.price {
+    font-weight: bold;
+}
