@@ -48,7 +48,6 @@ include "./includes/header.php";
                         </div>
                         <div class="cart-btn w-100 price">ADD TO CART</div>
                     </div>
-
                 </div>
 
                 <div class="col">
@@ -57,8 +56,9 @@ include "./includes/header.php";
                             <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
                             <div class="my-2 fs-4">category</div>
+                            <div class="price">$99.9 </div>
                         </div>
                         <div class="cart-btn w-100 price">ADD TO CART</div>
                     </div>
@@ -70,8 +70,9 @@ include "./includes/header.php";
                             <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
                             <div class="my-2 fs-4">category</div>
+                            <div class="price">$99.9 </div>
                         </div>
                         <div class="cart-btn w-100 price">ADD TO CART</div>
                     </div>
@@ -84,8 +85,9 @@ include "./includes/header.php";
                             <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
                             <div class="my-2 fs-4">category</div>
+                            <div class="price">$99.9 </div>
                         </div>
                         <div class="cart-btn w-100 price">ADD TO CART</div>
                     </div>
@@ -98,8 +100,9 @@ include "./includes/header.php";
                         <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
                             <div class="my-2 fs-4">category</div>
+                            <div class="price">$99.9 </div>
                         </div>
                         <div class="cart-btn w-100 price">ADD TO CART</div>
                     </div>
@@ -111,8 +114,9 @@ include "./includes/header.php";
                         <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
                             <div class="my-2 fs-4">category</div>
+                            <div class="price">$99.9 </div>
                         </div>
                         <div class="cart-btn w-100 price">ADD TO CART</div>
                     </div>
