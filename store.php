@@ -2,10 +2,10 @@
 include "./includes/header.php";
 ?>
 <div class="container-fluid bg-light">
-    <div class="row pt-5">
-        <div class="col-3">
+    <div class="row pt-5 products-grid">
+        <div class=" col-md-3 filter">
             <div class="row g-0">
-                <div class="col-12">
+                <div class="col-12 ">
                     <form action="" method="get" class="d-flex gap-2 ">
                         <input type="text" name="" id="" placeholder="Search products.." class="w-100">
                         <button type="submit" class="btn btn-success">
@@ -35,13 +35,11 @@ include "./includes/header.php";
         <div class="col-8">
 
 
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
                 <div class="col">
-                    <div class="card h-100 justify-content-between">
+                    <div class="card h-100 ">
                         <div class="text-center">
-                            <img src="https://via.placeholder.com/250
-
-C/O https://placeholder.com/">
+                            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3">A JACK AND THREEA JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -56,9 +54,7 @@ C/O https://placeholder.com/">
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://via.placeholder.com/250
-
-C/O https://placeholder.com/" class="image-fluid">
+                            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -71,24 +67,7 @@ C/O https://placeholder.com/" class="image-fluid">
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://via.placeholder.com/250
-C/O https://placeholder.com/">
-                        </div>
-                        <div class="text-center">
-                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
-                            <div class="my-2 fs-4">category</div>
-                        </div>
-                        <div class="cart-btn w-100 price">ADD TO CART</div>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="card h-100 justify-content-between">
-                        <div class="text-center">
-                            <img src="https://via.placeholder.com/250
-
-C/O https://placeholder.com/">
+                            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -102,9 +81,21 @@ C/O https://placeholder.com/">
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://via.placeholder.com/250
+                            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
+                        </div>
+                        <div class="text-center">
+                            <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
+                            <div class="my-2 fs-4">category</div>
+                        </div>
+                        <div class="cart-btn w-100 price">ADD TO CART</div>
+                    </div>
+                </div>
 
-C/O https://placeholder.com/">
+
+                <div class="col">
+                    <div class="card h-100 justify-content-between">
+                        <div class="text-center">
+                        <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
@@ -117,9 +108,7 @@ C/O https://placeholder.com/">
                 <div class="col">
                     <div class="card h-100 justify-content-between">
                         <div class="text-center">
-                            <img src="https://via.placeholder.com/250
-
-C/O https://placeholder.com/">
+                        <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="w-100">
                         </div>
                         <div class="text-center">
                             <h5 class="px-2 py-3"> JACK AND THREE QUEENS QUEENSA JACK AND THREE QUEENS</h5>
