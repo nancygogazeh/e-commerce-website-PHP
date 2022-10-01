@@ -208,3 +208,30 @@ table {
 .price {
     font-weight: bold;
 }
+
+
+/* contact-us */
+.border-contact{
+    padding: 20px;
+    box-shadow: 5px 5px 15px 15px rgba(135, 135, 135, 0.186);
+    border-radius: 5px;
+}
+
+
+.contact-img{
+    width: 100%;
+    min-height: 500px;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+     background: url("contact.jpg") no-repeat; 
+     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* End contact-us */
+
