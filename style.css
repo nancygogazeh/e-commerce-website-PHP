@@ -186,6 +186,13 @@ table {
     td:nth-of-type(10):before {
         content: "Arbitrary Data";
     } */
+    .filter{
+        order:2;
+        margin-top: 20px;
+    }
+    .products-grid{
+        justify-content: center;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -194,4 +201,10 @@ table {
         justify-content: space-between;
     }
 
+}
+
+/* products */
+
+.price {
+    font-weight: bold;
 }
