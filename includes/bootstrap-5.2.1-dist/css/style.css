@@ -14,11 +14,7 @@
   } 
 
 
-  .container {
-    /* position: relative; */
-    /* text-align: center; */
-   
-  } 
+  
  
 
   .top-lft {
@@ -195,7 +191,6 @@
     left: 50%;
 
 }
-.customer-logos slider
 
 
   /*checkout style*/
@@ -608,4 +603,4 @@ table {
     color: #fff;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Alice&family=Bree+Serif&family=Josefin+Sans&family=K2D&family=Open+Sans&family=Poppins&family=Roboto&family=Tangerine:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alice&family=Bree+Serif&family=Josefin+Sans&family=K2D&family=Open+Sans&family=Poppins&family=Roboto&family=Tangerine:wght@400;700&display=swap");
