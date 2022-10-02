@@ -1,3 +1,6 @@
+<?php 
+include "./includes/dbcon.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,8 +139,9 @@
             <div class="col-8 mt-5">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
                     <?php
-                    include "./includes/dbcon.php";
-                    $sql = "SELECT products.id , name,image,author,price,category.category_name FROM products INNER JOIN category on products.category = category.id";
+                    
+                    $category= $_GET['category_name'];
+                    $sql = "SELECT products.id , name,image,author,price,category.category_name FROM products INNER JOIN category on products.category = category.id AND category.category_name='$category'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -145,9 +149,9 @@
                         while ($row = $result->fetch_assoc()) {
                     ?>
                             <div class="col">
-                                <div class="card  h-100 " style="    justify-content: space-between;">
+                                <div class="card  h-100 " style="justify-content: space-between;">
                                     <div class="text-center">
-                                        <a href="./category.php?category_name=<?php echo $row['category_name']; ?>">
+                                        <a href="./product.php?id=<?php echo $row['id']; ?>">
                                             <img src="<?php echo "admin\\images\\" . $row['image']; ?>" style="width:200px; height:350px;" class="w-100">
                                         </a>
                                     </div>
