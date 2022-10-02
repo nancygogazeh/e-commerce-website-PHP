@@ -187,8 +187,8 @@ table {
         content: "Arbitrary Data";
     } */
     .filter{
-        order:2;
-        margin-top: 20px;
+        order:2 !important;
+        margin-top:50px !important;
     }
     .products-grid{
         justify-content: center;
