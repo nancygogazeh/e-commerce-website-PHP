@@ -18,7 +18,9 @@
 
 <body>
 
-<?php  ?>
+    <?php
+    include "./includes/header.php";
+    ?>
     <div class="contact-img">
         <h1 class="container">Contact us</h1>
     </div>
@@ -29,16 +31,16 @@
                 <br>
                 <h2>You tell us. We listen.</h2>
                 <br>
-                <h5><i class="bi bi-envelope"></i>   info@bookatter.com</h5>
+                <h5><i class="bi bi-envelope"></i> info@bookatter.com</h5>
                 <br>
-                <h5><i class="bi bi-telephone"></i>  +962777777777</h5>
+                <h5><i class="bi bi-telephone"></i> +962777777777</h5>
                 <br>
-                <h5><i class="bi bi-clock"></i>  Monday to Saturday - 9:00 am to 7:00 pm</h5>
+                <h5><i class="bi bi-clock"></i> Monday to Saturday - 9:00 am to 7:00 pm</h5>
                 <br>
 
-                <h5><i class="bi bi-clock"></i>  Sunday - 10:00 am to 5:00 pm</h5>
+                <h5><i class="bi bi-clock"></i> Sunday - 10:00 am to 5:00 pm</h5>
                 <br>
-                <h5>  need Help? Call Us. +962777777777</h5>
+                <h5> need Help? Call Us. +962777777777</h5>
 
             </div>
             <div class="col">
@@ -54,8 +56,8 @@
                                     <div class="border border-contact">
                                         <h3>Have any Queries? We're here to help.</h3>
                                         <br>
-                                        <?php session_start ();?>
-                                        <?php if(isset($_SESSION ['res'])) ?>
+                                        <?php session_start(); ?>
+                                        <?php if (isset($_SESSION['res'])) ?>
                                         <div class="alert alert-warning" role="alert">
                                             <?php echo $_SESSION['res']; ?>
                                         </div>
@@ -65,8 +67,7 @@
                                             <div class=" row ">
                                                 <div class="col-md-12">
                                                     <div class=" form-group ">
-                                                        <input type="text" class="form-control" name="name"
-                                                            placeholder="Name">
+                                                        <input type="text" class="form-control" name="name" placeholder="Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,8 +75,7 @@
                                             <div class=" row ">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="contact-email"
-                                                            placeholder="E-mail">
+                                                        <input type="text" class="form-control" name="contact-email" placeholder="E-mail">
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,8 +84,7 @@
 
                                                 <div class=" col-md-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="subject"
-                                                            placeholder="Subject">
+                                                        <input type="text" class="form-control" name="subject" placeholder="Subject">
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,8 +92,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea class="form-control" rows="5" name="msg"
-                                                            placeholder="msg">
+                                                        <textarea class="form-control" rows="5" name="msg" placeholder="msg">
                                                         </textarea>
                                                     </div>
                                                 </div>
@@ -141,6 +139,11 @@
                 </div>
 
             </div>
+
+            <?php
+            include "./includes/footer.php";
+            ?>
+
 </body>
 
 </html>
