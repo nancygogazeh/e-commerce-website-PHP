@@ -1,6 +1,5 @@
-
 <?php 
-    include "../includes/connection.php";
+    include "./includes/connection.php";
     include "./includes/header.php";
 ?>
 
@@ -39,95 +38,118 @@
         <div class="registerContainer">
         <div class="container">
             <div class="Title"><h2>Register</h2></div>
-                <form class="registerForm" action="" method="POST">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your First Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="lname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your Last Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" aria-describedby="emailHelp" pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+" title="Example: name@email.com" required>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" class="form-control" name="pass" placeholder="Your Password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$" title="One Uppercase, One Lowercase, One special Character, at least 8 digits" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cpassword" class="form-label">Password</label>
-                        <input type="password" id="cpassword" class="form-control" name="cpass" placeholder="Confirm Password" required>
-                    </div>
-                    <button onclick="pass()" type="submit" class="btn btn-primary">Register</button>
-                    <a class="btn btn-secondary" href="login.php">Login</a>
+            <form action="" method="POST" class="registerForm">
+
+                <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" aria-describedby="usrname" name="username">
+                </div>
+
+                <div class="mb-3">
+                <label for="firstname" class="form-label">Firstname</label>
+                <input type="text" class="form-control" id="fname" name="fname" aria-describedby="fname">
+                </div>
+
+                <div class="mb-3">
+                <label for="pass" class="form-label">Lastname</label>
+                <input type="text" class="form-control" id="lname" aria-describedby="lname" name="lname">
+                </div>
+
+                <div class="mb-3">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" class="form-control" id="pass" name="pass" aria-describedby="pass">
+                </div>
+
+                <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address">
+                </div>
+
+                <div class="mb-3">
+                <label for="telephone" class="form-label">telephone</label>
+                <input type="telephone" class="form-control" id="telephone" name="telephone" aria-describedby="telephone">
+                </div>
+
+                <div class="mb-3">
+                <label for="email" class="form-label">Email</label> <br>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="email" />
+                </div>
+
+                <div class="mb-3">
+                <label for="role" class="form-label">Role</label> <br>
+                <select class="form-control" name="role" id="id">
+                    <option value="" hidden>--Choose Role--</option>
+                    <option value="user">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                </div>
+
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
         <?php
-            if(isset($_POST['email'])) 
+            if(isset($_POST['username']))
             {
                 $username = $_POST['username'];
                 $fname = $_POST['fname'];
                 $lname = $_POST['lname'];
-                $email = $_POST['email'];
                 $pass = $_POST['pass'];
-                $role = "user";
-            }
+                $email = $_POST['email'];
+                $address = $_POST['address'];
+                $tel = $_POST['telephone'];
+                $created = date('Y-m-d h:i:s A');
+                $lastmod = date('Y-m-d h:i:s A');
+                $role = $_POST['role'];
 
-            if(mysqli_connect_error())
-            {
-                die('Connection Error('. mysqli_connect_errno().')'. mysqli_connect_error());
-            }
-            else
-            {
-                $SELECT = "SELECT email FROM register WHERE email = ? LIMIT 1";
-                $INSERT = "INSERT INTO register (username, firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, ?, ?)";
-            }
+                if(mysqli_connect_error())
+                {
+                    die('Connection Error('. mysqli_connect_errno().')'. mysqli_connect_error());
+                }
+                else
+                {
+                    $SELECT = "SELECT email FROM users WHERE email = ? LIMIT 1";
+                    $INSERT = "INSERT INTO users (username, password, first_name, last_name, address, telephone, email, created_at, modified_at, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                }
 
-            // Prepare Statement
-            $stmt = $conn->prepare($SELECT);
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
-            $stmt->bind_result($email);
-            $stmt->store_result();
-            $rnum = $stmt->num_rows;
+                // Prepare Statement
+                $stmt = $conn->prepare($SELECT);
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $stmt->bind_result($email);
+                $stmt->store_result();
+                $rnum = $stmt->num_rows;
 
-            if($rnum==0)
-            {
+                if($rnum==0)
+                {
                 $stmt->close();
 
                 $stmt = $conn->prepare($INSERT);
-                $stmt->bind_param("ssssss", $username, $fname, $lname, $email, $pass, $role);
+                $stmt->bind_param("ssssssssss", $username, $pass, $fname, $lname, $address, $tel, $email, $created, $lastmod, $role);
                 $stmt->execute();
-                
-                ?>
-                <script>
-                    window.alert("Registered Successfully");
-                    window.location.href = "login.php";
-                </script>
-                <?php
-            }
-            
-            else 
-            {
-                ?>
-                <script>
-                    window.alert("Someone already have with this email, please Try an different email");
-                    setTimeout(function(){ window.location.href = "register.php"; }, 2000);           
-                </script>
 
+                ?>
+                    <script>
+                        window.alert("Registered Successfully");
+                        window.location.href = "login.php";
+                    </script>
                 <?php
-            } 
-            $stmt->close();
-            $conn->close();
+                }
+                else 
+                {
+                    ?>
+                    <script>
+                        window.alert("Someone already have with this email, please Try an different email");
+                        setTimeout(function(){ window.location.href = "register.php"; }, 2000);           
+                    </script>
+
+                    <?php
+                } 
+                $stmt->close();
+                $conn->close();
+            }
         ?>
+        <br>
     </section>
 </body>
 </html>

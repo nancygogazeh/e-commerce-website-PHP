@@ -3,7 +3,7 @@ include('./includes/connection.php');
 
 
 if (isset($_POST["action"])) {
-    $query = $conn->query("SELECT products.id , name,image,author,price,category.category_name FROM products INNER JOIN category on products.category = category.id");
+    $query = $conn->query("SELECT products.id , name,image,author,price,category_id,category_name FROM products INNER JOIN category on products.category_id = category.id");
     if (isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
         $query = $conn->query("SELECT * FROM products WHERE price BETWEEN '" . $_POST["minimum_price"] . "' AND '" . $_POST["maximum_price"] . "'");
     }

@@ -6,7 +6,7 @@ include('includes/header.php');
 ?>
     <div id="wrapper">
         <?php include('./includes/sidebar.php');?>
-        <?php include('./includes/contet.php');?>
+        <?php include('./includes/content.php');?>
     </div>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

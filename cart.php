@@ -31,16 +31,16 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Baghdad</a>
+                    <a class="nav-link" href="index.php">Baghdad</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Shop</a>
+                    <a class="nav-link" href="store.php">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact-us</a>
+                    <a class="nav-link" href="contact.php">Contact-us</a>
                 </li>
             </ul>
             <!-- Left links -->

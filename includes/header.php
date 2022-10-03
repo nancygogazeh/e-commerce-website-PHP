@@ -5,7 +5,7 @@
   <title>navbar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/includes/bootstrap-5.2.1-dist/css/stylee.css">
+  <link rel="stylesheet" href="/includes/bootstrap-5.2.1-dist/css/style.css">
   <script src="bootstrap-5.2.1-dist/js/index.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -48,16 +48,16 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Baghdad</a>
+          <a class="nav-link" href="index.php">Baghdad</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="store.php">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact-us</a>
+          <a class="nav-link" href="contact.php">Contact-us</a>
         </li>
       </ul>
       <!-- Left links -->

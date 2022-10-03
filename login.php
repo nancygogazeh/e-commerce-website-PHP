@@ -1,10 +1,11 @@
 <?php 
-include "./includes/header.php";
+require_once "./includes/connection.php";
 
-?>
-
-<?php 
-    include "../includes/connection.php";
+if(isset($_SESSION['login']))
+{
+    header("Location: accountpage.php");
+}
+else {}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +21,7 @@ include "./includes/header.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <?php include_once "./includes/header.php"; ?>
     <section id="loginHome">
         <div class="loginContainer">
             <div class="container">
@@ -50,7 +52,7 @@ include "./includes/header.php";
                 $email =  $_POST['email'];
                 $password = $_POST['pass'];
 
-                $SELECT = "SELECT * FROM register WHERE email = '$email' AND password = '$password'";
+                $SELECT = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
                 $result = $conn->query($SELECT);
                 if( $result -> num_rows >0) 
                 {
@@ -61,18 +63,25 @@ include "./includes/header.php";
                         if($row["role"] =="Admin")
                         {
                             $_SESSION['login']=$_POST['email'];
-                            $_SESSION['username']=$row["Firstname"]." ".$row["Lastname"];
-                         header("Location: ../index.php");
-                                echo $_SESSION['login'];
-                         die();
+                            $_SESSION['username']=$row["username"];
+                            ?>
+                            <script>
+                                window.location.href = "admin/userspanel.php";
+                            </script>
+                            <?php
+                            die();
                         }
                         if($row["role"]=="user")
                         {
-                                $_SESSION['login']=$_POST['email'];
-                                 $_SESSION['username']=$row["Firstname"]." ".$row["Lastname"];
-                         header("Location: ../index.php");
-                                echo $_SESSION['login'];
-                         die();
+                            $_SESSION['login']=$_POST['email'];
+                            $_SESSION['username']=$row["username"];
+                            echo $_SESSION['login'];
+                            ?>
+                            <script>
+                                window.location.href = "accountpage.php";
+                            </script>
+                            <?php
+                            die();
                         }
                     } 
                     // output data of each row
@@ -86,7 +95,7 @@ include "./includes/header.php";
                     if(isset($_POST['email']))
                     {
                         echo "<script>alert('Invalid Email and / or password');</script>";
-                        $extra="../index.php";
+                        $extra="./index.php";
                         $host  = $_SERVER['HTTP_HOST'];
                         $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
                         //header("location:http://$host$uri/$extra");
@@ -96,6 +105,7 @@ include "./includes/header.php";
             }
         ?>
     </section>
+    <?php include("includes/footer.php"); ?>
 </body>
 </html>
 
