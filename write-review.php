@@ -11,8 +11,6 @@ $product_id = $_GET['id'];
 
 // validate name, email, rating, comment, id
 
-
-
 if (empty($name)){
     die('Please enter your name');
 }
@@ -27,13 +25,14 @@ if (empty($rating)){
 }
 
 
+//prepare and bind
 
-// prepare and bind
 $stmt = $conn->prepare("INSERT INTO comments (name, email, comment, rating, product_id) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("sssss", $name, $email, $comment, $rating, $product_id);
 $stmt->execute();
 
 mysqli_close($conn);
 
-
 header("Location: single-product.php?id= $product_id");
+
+

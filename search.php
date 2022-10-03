@@ -1,3 +1,7 @@
+<?php
+$con = mysqli_connect("localhost", "root", "", "e-commerce-website-php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,11 +105,6 @@
                                 <div id="price_range"></div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <br />
-                            <div class="row filter_data">
-                            </div>
-                        </div>
 
                     </div>
                     <?php include "./includes/category_widget.php"; ?>
@@ -113,44 +112,50 @@
             </div>
             <div class="col-8 mt-5">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
+
                     <?php
-                    include "./includes/dbcon.php";
-                    $sql = "SELECT products.id , name,image,author,price,category_id,category_name FROM products INNER JOIN category on products.category_id = category.id";
-                    $result = $conn->query($sql);
+                    if (isset($_GET['search'])) {
+                        $filtervalues = $_GET['search'];
+                        $query = "SELECT * FROM products WHERE CONCAT(name,price) LIKE '%$filtervalues%' ";
+                        $query_run = mysqli_query($con, $query);
 
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = $query_run->fetch_assoc()) {
                     ?>
-                            <div class="col">
-                                <div class="card  h-100 " style="    justify-content: space-between;">
-                                    <div class="text-center">
-                                        <a href="./single-product.php?id=<?php echo $row['id']; ?>">
-                                            <img src="<?php echo "admin\\images\\" . $row['image']; ?>" style="width:200px; height:350px;" class="w-100">
-                                        </a>
-                                    </div>
-                                    <div class="text-center">
-                                        <h5 class="px-2 py-3"><?php echo $row['name']; ?></h5>
-
-                                        <div class="my-2 fs-4 ">
-
-                                            category: <a href="./category.php?category_name=<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?>
+                                <div class="col">
+                                    <div class="card  h-100 " style="justify-content: space-between;">
+                                        <div class="text-center">
+                                            <a href="./single-product.php?id=<?php echo $row['id']; ?>">
+                                                <img src="<?php echo "admin\\images\\" . $row['image']; ?>" style="width:200px; height:350px;" class="w-100">
                                             </a>
                                         </div>
+                                        <div class="text-center">
+                                            <h5 class="px-2 py-3"><?php echo $row['name']; ?></h5>
 
-                                        <div class="price md-2"><?php echo "$" . $row['price'] ?></div>
+                                            <div class="my-2 fs-4 ">
+
+                                                <!-- category: <a href="./category.php?category_name=<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?>
+                                        </a> -->
+                                            </div>
+
+                                            <div class="price md-2"><?php echo "$" . $row['price'] ?></div>
+                                        </div>
+                                        <div class="cart-btn w-100 price">ADD TO CART</div>
                                     </div>
-                                    <div class="cart-btn w-100 price">ADD TO CART</div>
                                 </div>
-                            </div>
 
-
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="4">No Record Found</td>
+                            </tr>
                     <?php
                         }
-                    } else {
-                        echo "0 results";
                     }
                     ?>
+
 
                 </div>
             </div>

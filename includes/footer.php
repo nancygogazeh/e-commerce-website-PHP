@@ -1,10 +1,8 @@
 
 
-    <div class="content d-flex align-items-center bg-dark">
-      <h2 class="w-100 text-center"></h2>
-    </div>
+
    <!-- Footer -->
-<footer class="bg-dark text-center text-white">
+<footer class="bg-dark text-center text-white mt-5">
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
@@ -180,8 +178,8 @@
     
     
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <script src="./includes/bootstrap-5.2.1-dist/js/bootsrap.min.js"></script>
  
 
 
