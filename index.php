@@ -67,19 +67,9 @@
 
 
         <!-- Avatar -->
-        <a
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-          
-        >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification "><img class="rounded-circle"
-            height="25" src="./image/user.png"> </span>
-        </a>
+        <div class="mx-3">
+          <a href="./accountpage.php"><img class="rounded-circle" height="25" src="./image/user.png" /> </a>
+        </div>
 
 
       </div>

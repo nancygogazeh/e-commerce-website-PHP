@@ -1,7 +1,20 @@
 <?php
 $con = mysqli_connect("localhost", "root", "", "e-commerce-website-php");
 ?>
+<?php
+session_start();
 
+
+if (isset($_POST['addproduct'])) {
+    $item = array(
+        'id_item' => $_POST['addproduct'],
+        'quantity' => 1
+    );
+
+    array_push($_SESSION['cart'], $item);
+    header("Refresh:0");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,7 +153,9 @@ $con = mysqli_connect("localhost", "root", "", "e-commerce-website-php");
 
                                             <div class="price md-2"><?php echo "$" . $row['price'] ?></div>
                                         </div>
-                                        <div class="cart-btn w-100 price">ADD TO CART</div>
+                                        <form method="post" action="">
+                                            <button name="addproduct" class="cart-btn w-100 price" value="<?php echo $row['id']; ?>">ADD TO CART</button>
+                                        </form>
                                     </div>
                                 </div>
 

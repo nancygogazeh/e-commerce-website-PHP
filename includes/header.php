@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <title>navbar</title>
@@ -8,11 +9,11 @@
   <link rel="stylesheet" href="/includes/bootstrap-5.2.1-dist/css/style.css">
   <script src="bootstrap-5.2.1-dist/js/index.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
 </head>
 
@@ -21,15 +22,7 @@
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
 
@@ -37,13 +30,7 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="index.php">
-        <img class="rounded-circle"
-            height="40"
-          src="./image/bookstore.png"
-          height="15"
-          alt="book Logo"
-          loading="lazy"
-        />
+        <img class="rounded-circle" height="40" src="./image/bookstore.png" height="15" alt="book Logo" loading="lazy" />
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -71,40 +58,11 @@
 
       <!-- Notifications -->
       <div class="mr-3">
-          <a href="./cart.php"><img class="rounded-circle" height="25" src="./image/icon.png" /> </a>
-        </div>
+        <a href="./cart.php"><img class="rounded-circle" height="25" src="./image/icon.png" /> </a>
+      </div>
       <!-- Avatar -->
-      <div class="dropdown">
-        <a
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="./image/user.png"
-            class="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
+      <div class="mx-3">
+        <a href="./accountpage.php"><img class="rounded-circle" height="25" src="./image/user.png" /> </a>
       </div>
     </div>
     <!-- Right elements -->

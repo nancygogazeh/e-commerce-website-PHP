@@ -1,6 +1,20 @@
 <?php
 include "./includes/dbcon.php";
 ?>
+<?php
+session_start();
+
+
+if (isset($_POST['addproduct'])) {
+    $item = array(
+        'id_item' => $_POST['addproduct'],
+        'quantity' => 1
+    );
+
+    array_push($_SESSION['cart'], $item);
+    header("Refresh:0");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,10 +79,9 @@ include "./includes/dbcon.php";
 
 
                     <!-- Avatar -->
-                    <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge rounded-pill badge-notification "><img class="rounded-circle" height="25" src="./image/user.png"> </span>
-                    </a>
+                    <div class="mx-3">
+                        <a href="./accountpage.php"><img class="rounded-circle" height="25" src="./image/user.png" /> </a>
+                    </div>
 
 
                 </div>
@@ -143,7 +156,9 @@ include "./includes/dbcon.php";
 
                                         <div class="price md-2"><?php echo "$" . $row['price'] ?></div>
                                     </div>
-                                    <div class="cart-btn w-100 price">ADD TO CART</div>
+                                    <form method="post" action="">
+                                        <button name="addproduct" class="cart-btn w-100 price" value="<?php echo $row['id']; ?>">ADD TO CART</button>
+                                    </form>
                                 </div>
                             </div>
 

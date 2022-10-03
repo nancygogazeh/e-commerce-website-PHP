@@ -150,7 +150,7 @@ require_once("includes/connection.php");
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->
@@ -161,7 +161,7 @@ require_once("includes/connection.php");
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <a class="navbar-brand mt-2 mt-lg-0" href="./index.php">
                     <img class="rounded-circle" height="40" src="./image/bookstore.png" height="15" alt="book Logo" loading="lazy" />
                 </a>
                 <!-- Left links -->
@@ -191,39 +191,14 @@ require_once("includes/connection.php");
                 </a>
 
                 <!-- Notifications -->
-                <div class="dropdown">
-                    <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-bell"></i>
-                        <span><img class="rounded-circle" height="25" src="./image/icon.png"> </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="#">Some news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
+                <div class="mr-3">
+                    <a href="./cart.php"><img class="rounded-circle" height="25" src="./image/icon.png" /> </a>
                 </div>
+
+
                 <!-- Avatar -->
-                <div class="dropdown">
-                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <img src="./image/user.png" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                        <li>
-                            <a class="dropdown-item" href="#">My profile</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </li>
-                    </ul>
+                <div class="mx-3">
+                    <a href="./accountpage.php"><img class="rounded-circle" height="25" src="./image/user.png" /> </a>
                 </div>
             </div>
             <!-- Right elements -->
@@ -315,7 +290,7 @@ require_once("includes/connection.php");
                             ?>
                             <div class="rightContainer">
                                 <div class="rightHeading">
-                                    <h1>You are not logged in. Please (<a href="../logout.php">Log in</a>)</h1>
+                                    <h1>You are not logged in. Please (<a href="./login.php">Log in</a>)</h1>
                                 </div>
                             </div>
                         <?php

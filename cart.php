@@ -1,5 +1,15 @@
+<?php
+session_start();
+$con = mysqli_connect("localhost", "root", "", "e-commerce-website-php");
+
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>CART</title>
     <meta charset="utf-8">
@@ -60,10 +70,9 @@
 
 
                 <!-- Avatar -->
-                <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification "><img class="rounded-circle" height="25" src="./image/user.png"> </span>
-                </a>
+                <div class="mx-3">
+                    <a href="./accountpage.php"><img class="rounded-circle" height="25" src="./image/user.png" /> </a>
+                </div>
 
 
             </div>
@@ -89,30 +98,59 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="product-remove">
-                    <i class="bi bi-x-circle"></i>
-                </td>
-                <td>
-                    <img src="https://via.placeholder.com/150" alt="book image" srcset="">
-                </td>
-                <td>
-                    <a href="#" class="text-decoration-none">Book name</a>
-                </td>
-                <td>
-                    <bdi>
-                        99.99$
-                    </bdi>
-                </td>
-                <td>
-                    <input type="number" class="input-group-text ms-auto" min="0">
-                </td>
-                <td>
-                    <bdi>
-                        99.99$
-                    </bdi>
-                </td>
-            </tr>
+
+            <?php
+            $array = array();
+            for ($j = 0; $j < count($_SESSION['cart']); $j++) {
+                array_push($array, $_SESSION['cart'][$j]['id_item']);
+            }
+            $non_dublicates = array_count_values($array);
+
+            if (count($non_dublicates) > 0) {
+                $sum = 0;
+                foreach ($non_dublicates as $k => $v) {
+                    $sum += $v;
+                    $sql = "SELECT id,image, name,price FROM products where id= " . $k;
+
+                    $result = mysqli_query($con, $sql);
+                    $row = mysqli_fetch_row($result);
+                    $sum += $v * $row[3];
+            ?>
+                    <tr>
+                        <td class="product-remove">
+                            <i class="bi bi-x-circle"></i>
+                        </td>
+                        <td>
+                            <img src="<?php echo "./admin/images/" . $row[1] ?>" alt="book image" srcset="" style="width:150px;height:150px;">
+                        </td>
+                        <td>
+                            <a href="./single-product.php?id=<?php echo $row[0] ?>" class="text-decoration-none"><?php echo $row[2] ?></a>
+                        </td>
+                        <td>
+                            <bdi>
+                                <?php echo $row[3]; ?>
+                            </bdi>
+                        </td>
+                        <td>
+                            <input type="number" class="input-group-text ms-auto" min="0" value="<?php echo $v ?>">
+                        </td>
+                        <td>
+                            <bdi>
+                                <?php echo "$" . ($v * $row[3]); ?>
+                            </bdi>
+                        </td>
+                    </tr>
+            <?php
+                }
+            } else {
+                echo ("
+                NO PRODUCTS ARE ADDED YET!
+                ");
+            }
+
+
+            ?>
+
             <tr>
                 <td colspan="6 ">
                     <div class="coupon-section ">
@@ -149,7 +187,7 @@
                     <tr class="">
                         <td>Subtotal</td>
                         <td>
-                            <bdi>99.99$</bdi>
+                            <bdi><?php echo "$" . ($sum); ?></bdi>
                         </td>
                     </tr>
                     <tr>
@@ -158,12 +196,26 @@
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>99.99$</td>
+                        <td><?php echo "$" . ($sum + 10); ?></td>
                     </tr>
                     <tr>
                         <td colspan="2">
 
-                            <div class="cart-btn w-100">Checkout</div>
+                            <?php
+                            if (empty($_SESSION['login'])) {
+                                echo "
+                                <form method='get' action='./store.php'>
+                                <div class='alert alert-warning' role='alert'>
+                                You must login to checkout order! <a href='./login.php'>login</a>
+                                </div>
+                                <button class='cart-btn w-100' type='submit' disabled style='background-color:grey;'>Checkout</button>
+                                </form>
+                                ";
+                            } else {
+                                echo $_SESSION['login'] . " dsdsd ";
+                                echo "<form method='get' action=''><button class='cart-btn w-100' name='submit' type='submit'>Checkout</button></form>";
+                            }
+                            ?>
 
                         </td>
                     </tr>
