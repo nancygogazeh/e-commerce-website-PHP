@@ -141,7 +141,7 @@ include "./includes/dbcon.php";
                     <?php
                     
                     $category= $_GET['category_name'];
-                    $sql = "SELECT products.id , name,image,author,price,category.category_name FROM products INNER JOIN category on products.category = category.id AND category.category_name='$category'";
+                    $sql = "SELECT products.id , name,image,author,price,category_id,category_name FROM products INNER JOIN category on products.category_id = category.id AND category.category_name='$category'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
