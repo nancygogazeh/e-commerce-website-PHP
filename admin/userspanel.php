@@ -254,7 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td> $modified_at</td>
                             <td> $role</td>";
                    //echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
-                  echo '<td> <a href="update.php?id=' . $row['id'] . '"> <span class="fa fa-eye"></span></a></td>';
+                  echo '<td> <a href="update.php?id=' . $row['id'] . '"> <img src="./images/icons8-pencil-24.png"/></a></td>';
                   echo '<td> <a href="delete.php?id=' . $row['id'] . '" onclick="return confirm(\'Are you sure you want to delete this User?\')"><span class="fa fa-trash"></span></a></td>';
 
                     echo "</tr>";

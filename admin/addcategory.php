@@ -105,7 +105,7 @@
                             <td> $id  </td>
                             <td> $category </td>";
                             //echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
-                            echo '<td> <a href="addcategory.php?edit=' . $row['id'] . '"> <span class="fa fa-eye"></span></a></td>';
+                            echo '<td> <a href="addcategory.php?edit=' . $row['id'] . '"> <img src="./images/icons8-pencil-24.png"/></a></td>';
                             echo '<td> <a href="addcategory.php?delete=' . $row['id'] . '" onclick="return confirm(\'Are you sure you want to delete this Category?\')"><span class="fa fa-trash"></span></a></td>';
 
                             echo "</tr>";

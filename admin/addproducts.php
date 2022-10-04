@@ -317,8 +317,8 @@ include("./includes/connect.php");
                               
                               <td> $productName </td>
                               <td>
-                              <p class='descm' id='descrm'> $discrption </p>
-                              
+                              <p class='descRm' id='descrm$num;'> $discrption </p>
+                              <a class='drms' id='drm$num;' onclick='dreadmore()' >Read More</a>
                               </td>
                               <td> $sku  </td>
                               <td> $category  </td>
@@ -329,12 +329,32 @@ include("./includes/connect.php");
                               <td>  <img src='./images/$image' width='100vw' height='100hw'></td>";
 
                               //  echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
-                              echo '<td> <a href="addproducts.php?id=' . $row['id'] . '"> <span class="fa fa-eye"></span></a></td>';
+                              echo '<td> <a href="addproducts.php?id=' . $row['id'] . '"> <img src="./images/icons8-pencil-24.png"/></a></td>';
                               echo '<td> <a href="productDelete.php?id=' . $row['id'] . '" onclick="return confirm(\'Are you sure you want to delete this Product?\')"><span class="fa fa-trash"></span></a></td>';
 
                     echo "</tr>";
-    
-                
+                    ?>
+                      <script>
+                        function dreadmore()
+                        {
+                          let drm = document.getElementById('drm<?php echo $num; ?>');
+                          let descrm = document.getElementById('descrm<?php echo $num; ?>');
+                          console.log(drm, descrm);
+                          if(descrm.classList.contains('viewLess'))
+                          {
+                            descrm.classList.add('viewLess');
+                            drm.innerHTML = 'Read More';
+                          }
+                          else
+                          {
+                            descrm.classList.remove('viewLess');
+                            drm.innerHTML = 'View Less';
+                          }
+                        }
+
+                      </script>
+                    <?php
+                    $num++;
                   }
 
                   mysqli_free_result($result);

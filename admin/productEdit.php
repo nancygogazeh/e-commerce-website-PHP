@@ -49,7 +49,9 @@
             {
                 // Execute query
                 $statement->bind_param("ssiiissssi", $pname, $desc, $sku, $price, $discountId, $created, $modAt, $author, $filename, $catgory);
-       
+                // 'ssiiissssi', 'Legends & Latte', 'This program is...', '692', '20', NULL, '2022-10-01 22:0...', '2022-10-03 03:1...', 'Travis Baldree', '1664651307-1.jp...', '4')
+               
+               // such a weird error. everything is correct according to me 
                 $statement->execute();
                 ?>
                 <script>
