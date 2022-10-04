@@ -1,6 +1,6 @@
 <?php
 require_once "./includes/connection.php";
-
+session_start();
 if (isset($_SESSION['login'])) {
     header("Location: accountpage.php");
 } else {
@@ -64,9 +64,9 @@ if (isset($_SESSION['login'])) {
                         $_SESSION['login'] = $_POST['email'];
                         $_SESSION['username'] = $row["username"];
         ?>
-                        <script>
+                        <!-- <script>
                             window.location.href = "admin/index.php";
-                        </script>
+                        </script> -->
                     <?php
                         die();
                     }
@@ -100,8 +100,11 @@ if (isset($_SESSION['login'])) {
         }
         ?>
     </section>
+
     <?php
+    print_r($_SESSION);
     include "./includes/footer.php";
+
     ?>
 </body>
 

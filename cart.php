@@ -98,7 +98,7 @@ if (mysqli_connect_errno()) {
             </tr>
         </thead>
         <tbody>
-            
+
             <?php
             if (isset($_SESSION['cart'])) {
                 $array = array();
@@ -110,13 +110,13 @@ if (mysqli_connect_errno()) {
                 if (count($non_dublicates) > 0) {
                     $sum = 0;
                     foreach ($non_dublicates as $k => $v) {
-                       
+
                         $sql = "SELECT id,image, name,price FROM products where id= " . $k;
-    
+
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_row($result);
                         $sum += $v * $row[3];
-                ?>
+            ?>
                         <tr>
                             <td class="product-remove">
                                 <i class="bi bi-x-circle"></i>
@@ -141,7 +141,7 @@ if (mysqli_connect_errno()) {
                                 </bdi>
                             </td>
                         </tr>
-                <?php
+            <?php
                     }
                 } else {
                     echo ("
@@ -149,8 +149,8 @@ if (mysqli_connect_errno()) {
                     ");
                 }
             }
-           
-          
+
+
             ?>
 
             <tr>
@@ -192,7 +192,7 @@ if (mysqli_connect_errno()) {
                             <bdi><?php if (!isset($sum)) {
                                         $sum = 0;
                                         echo "$" . $sum;
-                                    }else{
+                                    } else {
                                         echo $sum;
                                     } ?></bdi>
                         </td>
