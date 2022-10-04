@@ -1,5 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+
+print_r($_SESSION);
+if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
+  $item = array(
+    'id_item' => $_POST['addproduct'],
+    'quantity' => 1
+  );
+
+  array_push($_SESSION['cart'], $item);
+  header("Refresh:0");
+} elseif (isset($_POST['addproduct'])) {
+  $_SESSION['cart'] = array();
+  $item = array(
+    'id_item' => $_POST['addproduct'],
+    'quantity' => 1
+  );
+
+  array_push($_SESSION['cart'], $item);
+  header("Refresh:0");
+}
+
+?>
+<?php
+$conn = new mysqli('localhost', 'root', '', 'e-commerce-website-php');
+if ($conn->connect_error) {
+  die('Error : (' . $conn->connect_errno . ') ' . $conn->connect_error);
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -154,72 +181,39 @@
       <hr>
     </div>
     <br /><br /><br />
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Big Bad</h5>
-            <p class="card-text">Thrillel</p>
-            <p class="card-text">560 pages</p>
+    <div class="container-fluid">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php
+        $sql = "SELECT products.id,name, price,author,image,category_name from products inner join category on products.category_id = category.id where featured=1 LIMIT 4;";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while ($row = $result->fetch_assoc()) {
+        ?>
+            <div class="col">
+              <div class="card h-100">
+                <a href="./single-product.php?id=<?php echo $row['id']; ?>"><img src="./admin/images/<?php echo $row['image'] ?>" class="card-img-top" alt="..."></a>
+                <div class="card-body p-2">
+                  <h5 class="card-title"><?php echo $row['name'] ?></h5>
+                  <a href="./category.php?category_name=<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?>
+                  </a>
+                  <p class="card-text"><?php echo $row['author'] ?></p>
+                  <h6 class="card-text">$<?php echo $row['price'] ?></h6>
+                  <form method="post" action="" class="m-0">
+                    <button name="addproduct" class="btn btn-sucess cart-btn w-100 mt-3 price" value="<?php echo $row['id']; ?>" style="background-color:peru; color:white;">ADD TO CART</button>
+                  </form>
+                </div>
+              </div>
+            </div>
 
 
-            <button class=" btn btn-success">ADD TO CART</button>
+        <?php
+          }
+        }
+        ?>
 
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Nona the Ninth
-            </h5>
-            <p class="card-text">Humor</p>
-            <p class="card-text">304 pages</p>
 
-            <button class=" btn btn-success">ADD TO CART</button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="card-img-top" alt="Thrillel">
-          <div class="card-body">
-            <h5 class="card-title">The Atlas Six </h5>
-            <p class="card-text">Mystery</p>
-            <p class="card-text">384 pages</p>
 
-            <button class=" btn btn-success">ADD TO CART</button>
-
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Where
-              Grows</h5>
-            <p class="card-text">Thrillel</p>
-            <p class="card-text">350 pages</p>
-
-            <button class=" btn btn-success">ADD TO CART</button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/250C/O https://placeholder.com/" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Don't Look
-              Back</h5>
-            <p class="card-text">Horror</p>
-            <p class="card-text">250 pages</p>
-            <button class=" btn btn-success">ADD TO CART</button>
-
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -233,7 +227,7 @@
     <div class="top-left">Limited time offer Best Offer <br />
       <h3>SPECIAL BOOKS</h3><br />
       <h5>choose a book to read to your holiday,</h5>
-      <h3> BUY ANY BOKK BY 20%DISCOUNT</h3>
+      <h3> BUY ANY BOOK BY 20% DISCOUNT</h3>
       <a class="btn btn-light text-dark" style="width:150px ; height:45px; align-self:center;" href="./store.php"> Shop Now</a>
     </div>
   </div>
