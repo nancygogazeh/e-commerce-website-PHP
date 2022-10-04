@@ -227,7 +227,7 @@ require_once("includes/connection.php");
                             <div class="row"><a href="accountpage.php?profile=downloads">Downloads</a></div>
                             <div class="row"><a href="accountpage.php?profile=addresses">Addresses</a></div>
                             <div class="row"><a href="accountpage.php?profile=details">Account Details</a></div>
-                            <div class="row"><a href="./logout.php">Logout</a></div>
+                            <a href="./logout.php" class="text-none text-dark"><div class="row">Logout</div></a>
                         </div>
                     </div>
                     <div class="rightSide">

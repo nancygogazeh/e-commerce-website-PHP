@@ -65,9 +65,9 @@ if (isset($_SESSION['login'])) {
                         $_SESSION['username'] = $row["username"];
                         $_SESSION['user_id']=$row['id'];
         ?>
-                        <!-- <script>
+                        <script>
                             window.location.href = "admin/index.php";
-                        </script> -->
+                        </script>
                     <?php
                         die();
                     }
