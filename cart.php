@@ -1,11 +1,14 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost", "root", "", "e-commerce-website-php");
+$conn = mysqli_connect("localhost", "root", "", "e-commerce-website-php");
 
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
 }
+if (isset($_POST['checkout'])) {
+    header('location:./checkout.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,26 +103,32 @@ if (mysqli_connect_errno()) {
         <tbody>
 
             <?php
+
             if (isset($_SESSION['cart'])) {
                 $array = array();
                 for ($j = 0; $j < count($_SESSION['cart']); $j++) {
                     array_push($array, $_SESSION['cart'][$j]['id_item']);
                 }
+                
                 $non_dublicates = array_count_values($array);
-
+                $_SESSION['nondublicate']= $non_dublicates;
                 if (count($non_dublicates) > 0) {
                     $sum = 0;
                     foreach ($non_dublicates as $k => $v) {
 
                         $sql = "SELECT id,image, name,price FROM products where id= " . $k;
 
-                        $result = mysqli_query($con, $sql);
+                        $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_row($result);
                         $sum += $v * $row[3];
             ?>
                         <tr>
                             <td class="product-remove">
-                                <i class="bi bi-x-circle"></i>
+                                <form action="" method="post">
+                                    <button type="submit" name="delete" value="<?php echo $row[0]; ?>" class="btn" onclick="return confirm('Are you sure you want to delete this product?')">
+                                        <i class="bi bi-x-circle"></i>
+                                    </button>
+                                </form>
                             </td>
                             <td>
                                 <img src="<?php echo "./admin/images/" . $row[1] ?>" alt="book image" srcset="" style="width:150px;height:150px;">
@@ -193,6 +202,7 @@ if (mysqli_connect_errno()) {
                                         $sum = 0;
                                         echo "$" . $sum;
                                     } else {
+                                        
                                         echo $sum;
                                     } ?></bdi>
                         </td>
@@ -215,19 +225,25 @@ if (mysqli_connect_errno()) {
                         <td colspan="2">
 
                             <?php
-                            if (empty($_SESSION['login'])) {
+                            if (empty($_SESSION['login']) || $sum == 0) {
                                 echo "
                                 <form method='get' action='./store.php'>
                                 <div class='alert alert-warning' role='alert'>
-                                You must login to checkout order! <a href='./login.php'>login</a>
+                                You must login to checkout order OR You have an EMPTY CART! <a href='./login.php'>login</a>
                                 </div>
                                 <button class='cart-btn w-100' type='submit' disabled style='background-color:grey;'>Checkout</button>
                                 </form>
                                 ";
                             } else {
-                                echo $_SESSION['login'] . " dsdsd ";
-                                echo "<form method='get' action=''><button class='cart-btn w-100' name='submit' type='submit'>Checkout</button></form>";
-                            }
+                                $_SESSION['sum']=$sum;
+                            ?>
+
+                                <form method='post' action='./checkout.php'>
+                                    <input type="hidden" name="nondublicate" value="<?php $non_dublicates ?>">
+                                    <input type="hidden" name="sum" value="<?php $sum ?>">
+                                    <button class='cart-btn w-100' name='checkout' type='submit'>Checkout</button>
+                                </form>
+                            <?php                            }
                             ?>
 
                         </td>
@@ -414,3 +430,21 @@ if (mysqli_connect_errno()) {
 </body>
 
 </html>
+<?php
+
+if (isset($_POST['delete'])) {
+
+    for ($j = 0; $j < count($_SESSION['cart']); $j++) {
+        if ($_SESSION['cart'][$j]['id_item'] == $_POST['delete']) {
+            unset($_SESSION['cart'][$j]);
+            $_SESSION['cart'] = array_values($_SESSION['cart']);
+?>
+            <script>
+                alert("Product Updated Successfully");
+                window.location.href = "cart.php";
+            </script>
+<?php
+        }
+    }
+}
+?>

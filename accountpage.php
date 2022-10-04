@@ -1,6 +1,7 @@
 <?php
-require_once("includes/connection.php");
 session_start();
+require_once("includes/connection.php");
+
 // if(!isset($_SESSION['login']))
 // {
 //     header("location: ../login.php");
@@ -234,7 +235,7 @@ session_start();
                         if (isset($_SESSION['login'])) {
                             if (isset($_GET['profile'])) {
                                 if ($_GET['profile'] == "details") {
-                                    $query = mysqli_query($conn, "SELECT * FROM users");
+                                    $query = mysqli_query($conn, "SELECT * FROM users WHERE email = '" . $_SESSION['login'] . "'");
                                     $user = mysqli_fetch_array($query);
 
                                     $fullname = $user['first_name'] . " " . $user['last_name'];
@@ -290,7 +291,7 @@ session_start();
                             ?>
                             <div class="rightContainer">
                                 <div class="rightHeading">
-                                    <h1>You are not logged in. Please (<a href="./login.php">Log in</a>)</h1>
+                                    <h1>You are not logged in. Please (<a href="login.php">Log in</a>)</h1>
                                 </div>
                             </div>
                         <?php
@@ -485,9 +486,6 @@ session_start();
 
 
     <script src="./includes/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
-</body>
-
-</html>
 </body>
 
 </html>

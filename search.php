@@ -20,6 +20,7 @@ if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
     );
 
     array_push($_SESSION['cart'], $item);
+    header("Refresh:0");
 }
 
 

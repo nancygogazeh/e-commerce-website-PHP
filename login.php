@@ -63,6 +63,7 @@ if (isset($_SESSION['login'])) {
                     if ($row["role"] == "Admin") {
                         $_SESSION['login'] = $_POST['email'];
                         $_SESSION['username'] = $row["username"];
+                        $_SESSION['user_id']=$row['id'];
         ?>
                         <!-- <script>
                             window.location.href = "admin/index.php";
@@ -73,6 +74,7 @@ if (isset($_SESSION['login'])) {
                     if ($row["role"] == "user") {
                         $_SESSION['login'] = $_POST['email'];
                         $_SESSION['username'] = $row["username"];
+                        $_SESSION['id']=$row['id'];
                         echo $_SESSION['login'];
                     ?>
                         <script>
