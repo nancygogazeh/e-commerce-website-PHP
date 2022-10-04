@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 02, 2022 at 10:00 AM
+-- Generation Time: Oct 04, 2022 at 01:56 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -56,7 +56,35 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 (1, 'Mystery'),
 (2, 'Horror'),
 (3, 'Thriller'),
-(4, 'action');
+(4, 'action'),
+(6, 'Suspense'),
+(7, 'Dramaa'),
+(18, 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `name` varchar(124) NOT NULL,
+  `comment` text NOT NULL,
+  `email` varchar(124) NOT NULL,
+  `rating` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `product_id`, `name`, `comment`, `email`, `rating`) VALUES
+(1, 7, 'hamza juwaihan', 'great', 'hamza.zaher12@gmail.com', 4),
+(2, 7, 'qassem', 'WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOWW', 'test2@gmail.com', 1),
+(3, 6, 'qassem', 'واااااااااااااو', 'test2@gmail.com', 2.5),
+(4, 6, 'ziad', 'يسعد دينك', 'admin@gmail.com', 5);
 
 -- --------------------------------------------------------
 
@@ -104,10 +132,17 @@ CREATE TABLE `order_details` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `total` decimal(10,0) NOT NULL,
-  `payment_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `user_id`, `total`, `created_at`, `modified_at`) VALUES
+(12, 12, '34', '2022-10-04 14:31:01', '2022-10-04 14:31:01'),
+(13, 12, '34', '2022-10-04 14:31:32', '2022-10-04 14:31:32');
 
 -- --------------------------------------------------------
 
@@ -119,9 +154,18 @@ CREATE TABLE `order_items` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `modified_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `amount`, `created_at`, `modified_at`) VALUES
+(9, 12, 7, 1, '2022-10-04 14:31:01', '2022-10-04 14:31:01'),
+(10, 13, 7, 1, '2022-10-04 14:31:32', '2022-10-04 14:31:32');
 
 -- --------------------------------------------------------
 
@@ -155,14 +199,14 @@ CREATE TABLE `products` (
   `modified_at` datetime NOT NULL DEFAULT current_timestamp(),
   `author` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `category` int(11) NOT NULL
+  `category_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `SKU`, `price`, `discount_id`, `created_at`, `modified_at`, `author`, `image`, `category`) VALUES
+INSERT INTO `products` (`id`, `name`, `description`, `SKU`, `price`, `discount_id`, `created_at`, `modified_at`, `author`, `image`, `category_id`) VALUES
 (6, 'Legends & Lattes', 'This program is read by the author.\r\n\r\nThe much-beloved BookTok sensation, Travis Baldrees novel of high fantasy and low stakes.\r\n\r\nCome take a load off at Vivs cafe, the first and only coffee shop in Thune. Grand opening!\r\n\r\nWorn out after decades of packing steel and raising hell, Viv, the orc barbarian, cashes out of the warrior’s life with one final score. A forgotten legend, a fabled artifact, and an unreasonable amount of hope lead her to the streets of Thune, where she plans to open the first coffee shop the city has ever seen.\r\n\r\nHowever, her dreams of a fresh start filling mugs instead of swinging swords are hardly a sure bet. Old frenemies and Thune’s shady underbelly may just upset her plans. To finally build something that will last, Viv will need some new partners, and a different kind of resolve.', 692, '20', NULL, '2022-10-01 22:08:27', '2022-10-01 22:08:27', 'Travis Baldree', '1664651307-1.jpg', 0),
 (7, 'Nona the Ninth', 'Her city is under siege.\r\n\r\nThe zombies are coming back.\r\n\r\nAnd all Nona wants is a birthday party.\r\n\r\nIn many ways, Nona is like other people. She lives with her family, has a job at her local school, and loves walks on the beach and meeting new dogs. But Nonas not like other people. Six months ago she woke up in a strangers body, and shes afraid she might have to give it back.\r\n\r\nThe whole city is falling to pieces. A monstrous blue sphere hangs on the horizon, ready to tear the planet apart. Blood of Eden forces have surrounded the last Cohort facility and wait for the Emperor Undying to come calling. Their leaders want Nona to be the weapon that will save them from the Nine Houses. Nona would prefer to live an ordinary life with the people she loves, with Pyrrha and Camilla and Palamedes, but she also knows that nothing lasts forever.\r\n\r\nAnd each night, Nona dreams of a woman with a skull-painted face...', 698, '24', NULL, '2022-10-01 22:10:40', '2022-10-01 22:10:40', 'Tamsyn Muir ', '1664651440-Tamsyn Muir.jpg', 0),
 (8, 'Under the Whispering Door', 'A Man Called Ove meets The Good Place in Under the Whispering Door, a delightful queer love story from TJ Klune, author of the New York Times and USA Today bestseller The House in the Cerulean Sea.Welcome to Charons Crossing.The tea is hot, the scones are fresh, and the dead are just passing through.', 697, '61', NULL, '2022-10-01 22:12:26', '2022-10-01 22:12:26', 'TJ Klune', '1664651546-1250217342.01._SCLZZZZZZZ_SX500_.jpg', 0),
@@ -201,13 +245,24 @@ CREATE TABLE `users` (
   `password` varchar(32) NOT NULL,
   `first_name` varchar(55) NOT NULL,
   `last_name` varchar(55) NOT NULL,
-  `address` text NOT NULL,
+  `address` varchar(255) NOT NULL,
   `telephone` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` varchar(55) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `telephone`, `email`, `created_at`, `modified_at`, `role`) VALUES
+(12, 'doaa', 'Nm1234567-', 'Majd', 'aaaa', 'Jordan', '0775252251', 'majd23@gmail.com', '2022-10-01 23:06:29', '2022-10-02 03:37:58', 'user'),
+(13, 'rahaf', '1481999', 'rahaf', 'omar', 'jordan', '0777777777', 'rahaf99@gmail.com', '2022-10-02 12:51:39', '2022-10-02 12:51:39', 'Super Admin'),
+(14, 'jo', 'Hh1234567-', 'John', 'Smth', 'America', '0775252251', 'jo88@gmail.com', '2022-10-02 07:52:09', '2022-10-02 07:55:59', 'Admin'),
+(15, 'heba', 'As12345-', 'nancy', 'aaaa', 'Jordan', '0775252251', 'heba22@gmail.com', '2022-10-02 08:40:43', '2022-10-02 08:40:43', 'user'),
+(17, 'hamza', 'H12345671234', 'hamza', 'zaher', 'assalt', '0790714732', 'hamza.zaher12@gmail.com', '2022-10-03 00:34:36', '2022-10-03 00:34:36', 'user');
 
 --
 -- Indexes for dumped tables
@@ -228,6 +283,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact_us`
 --
 ALTER TABLE `contact_us`
@@ -244,8 +305,7 @@ ALTER TABLE `discount`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `payment_id` (`payment_id`);
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `order_items`
@@ -267,7 +327,8 @@ ALTER TABLE `payment_details`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `discount_id` (`discount_id`);
+  ADD KEY `discount_id` (`discount_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `users`
@@ -289,7 +350,13 @@ ALTER TABLE `cart_items`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -307,13 +374,13 @@ ALTER TABLE `discount`
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
@@ -331,7 +398,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
@@ -348,8 +415,7 @@ ALTER TABLE `cart_items`
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `order_items`
@@ -368,7 +434,8 @@ ALTER TABLE `payment_details`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
