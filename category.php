@@ -5,7 +5,7 @@ include "./includes/dbcon.php";
 session_start();
 
 
-if (isset($_POST['addproduct'])) {
+if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
     $item = array(
         'id_item' => $_POST['addproduct'],
         'quantity' => 1
@@ -13,7 +13,16 @@ if (isset($_POST['addproduct'])) {
 
     array_push($_SESSION['cart'], $item);
     header("Refresh:0");
+}elseif (isset($_POST['addproduct'])){
+    $_SESSION['cart']=array();
+    $item = array(
+        'id_item' => $_POST['addproduct'],
+        'quantity' => 1
+    );
+
+    array_push($_SESSION['cart'], $item);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

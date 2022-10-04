@@ -98,57 +98,59 @@ if (mysqli_connect_errno()) {
             </tr>
         </thead>
         <tbody>
-
+            
             <?php
-            $array = array();
-            for ($j = 0; $j < count($_SESSION['cart']); $j++) {
-                array_push($array, $_SESSION['cart'][$j]['id_item']);
-            }
-            $non_dublicates = array_count_values($array);
-
-            if (count($non_dublicates) > 0) {
-                $sum = 0;
-                foreach ($non_dublicates as $k => $v) {
-                    $sum += $v;
-                    $sql = "SELECT id,image, name,price FROM products where id= " . $k;
-
-                    $result = mysqli_query($con, $sql);
-                    $row = mysqli_fetch_row($result);
-                    $sum += $v * $row[3];
-            ?>
-                    <tr>
-                        <td class="product-remove">
-                            <i class="bi bi-x-circle"></i>
-                        </td>
-                        <td>
-                            <img src="<?php echo "./admin/images/" . $row[1] ?>" alt="book image" srcset="" style="width:150px;height:150px;">
-                        </td>
-                        <td>
-                            <a href="./single-product.php?id=<?php echo $row[0] ?>" class="text-decoration-none"><?php echo $row[2] ?></a>
-                        </td>
-                        <td>
-                            <bdi>
-                                <?php echo $row[3]; ?>
-                            </bdi>
-                        </td>
-                        <td>
-                            <input type="number" class="input-group-text ms-auto" min="0" value="<?php echo $v ?>">
-                        </td>
-                        <td>
-                            <bdi>
-                                <?php echo "$" . ($v * $row[3]); ?>
-                            </bdi>
-                        </td>
-                    </tr>
-            <?php
+            if (isset($_SESSION['cart'])) {
+                $array = array();
+                for ($j = 0; $j < count($_SESSION['cart']); $j++) {
+                    array_push($array, $_SESSION['cart'][$j]['id_item']);
                 }
-            } else {
-                echo ("
-                NO PRODUCTS ARE ADDED YET!
-                ");
+                $non_dublicates = array_count_values($array);
+
+                if (count($non_dublicates) > 0) {
+                    $sum = 0;
+                    foreach ($non_dublicates as $k => $v) {
+                       
+                        $sql = "SELECT id,image, name,price FROM products where id= " . $k;
+    
+                        $result = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_row($result);
+                        $sum += $v * $row[3];
+                ?>
+                        <tr>
+                            <td class="product-remove">
+                                <i class="bi bi-x-circle"></i>
+                            </td>
+                            <td>
+                                <img src="<?php echo "./admin/images/" . $row[1] ?>" alt="book image" srcset="" style="width:150px;height:150px;">
+                            </td>
+                            <td>
+                                <a href="./single-product.php?id=<?php echo $row[0] ?>" class="text-decoration-none"><?php echo $row[2] ?></a>
+                            </td>
+                            <td>
+                                <bdi>
+                                    <?php echo $row[3]; ?>
+                                </bdi>
+                            </td>
+                            <td>
+                                <input type="number" class="input-group-text ms-auto" min="0" value="<?php echo $v ?>">
+                            </td>
+                            <td>
+                                <bdi>
+                                    <?php echo "$" . ($v * $row[3]); ?>
+                                </bdi>
+                            </td>
+                        </tr>
+                <?php
+                    }
+                } else {
+                    echo ("
+                    <tr>NO PRODUCTS ARE ADDED YET!</tr>
+                    ");
+                }
             }
-
-
+           
+          
             ?>
 
             <tr>
@@ -187,7 +189,12 @@ if (mysqli_connect_errno()) {
                     <tr class="">
                         <td>Subtotal</td>
                         <td>
-                            <bdi><?php echo "$" . ($sum); ?></bdi>
+                            <bdi><?php if (!isset($sum)) {
+                                        $sum = 0;
+                                        echo "$" . $sum;
+                                    }else{
+                                        echo $sum;
+                                    } ?></bdi>
                         </td>
                     </tr>
                     <tr>
@@ -196,7 +203,13 @@ if (mysqli_connect_errno()) {
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td><?php echo "$" . ($sum + 10); ?></td>
+                        <td>
+                            <?php if (!isset($sum)) {
+                                $sum = 0;
+                                echo "$" . $sum;
+                            } else {
+                                echo "$" . ($sum + 10);
+                            } ?></td>
                     </tr>
                     <tr>
                         <td colspan="2">
