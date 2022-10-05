@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-print_r($_SESSION);
 if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
     $item = array(
         'id_item' => $_POST['addproduct'],
