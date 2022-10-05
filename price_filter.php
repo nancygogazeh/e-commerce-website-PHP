@@ -235,16 +235,16 @@ if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
 
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="#!" class="text-white">Home</a>
+                                    <a href="index.php" class="text-white">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="text-white">Contact Us</a>
+                                    <a href="contact.php" class="text-white">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="text-white">My account</a>
+                                    <a href="account-page.php" class="text-white">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="text-white">Cart</a>
+                                    <a href="cart.php" class="text-white">Home</a>
                                 </li>
                             </ul>
                         </div>
