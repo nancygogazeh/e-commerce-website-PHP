@@ -49,9 +49,6 @@ if (isset($_POST['checkout'])) {
                         <a class="nav-link" href="store.php">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Category</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact-us</a>
                     </li>
                 </ul>
@@ -152,30 +149,13 @@ if (isset($_POST['checkout'])) {
                         </tr>
             <?php
                     }
-                } else {
-                    echo ("
-                    <tr>NO PRODUCTS ARE ADDED YET!</tr>
-                    ");
                 }
             }
 
 
             ?>
 
-            <tr>
-                <td colspan="6 ">
-                    <div class="coupon-section ">
-                        <div class="apply-coupon">
-                            <input type="text" class="me-2">
-                            <button class="ms-auto cart-btn">Apply Coupon</button>
-                        </div>
-                        <div class="update-cart">
-                            <button class="cart-btn">Update Cart</button>
-                        </div>
-                    </div>
 
-                </td>
-            </tr>
         </tbody>
         <!-- <div class=" col-md-3 row">
             <input type="text" class="input-group-text  col-md-6">
@@ -258,9 +238,7 @@ if (isset($_POST['checkout'])) {
 
 
 
-<div class="content d-flex align-items-center bg-dark">
-    <h2 class="w-100 text-center"></h2>
-</div>
+
 <!-- Footer -->
 <footer class="bg-dark text-center text-white mt-5">
     <!-- Grid container -->
@@ -324,13 +302,13 @@ if (isset($_POST['checkout'])) {
                         <a href="index.php" class="text-white">Home</a>
                     </li>
                     <li>
-                        <a href="contact.php" class="text-white">Home</a>
+                        <a href="contact.php" class="text-white">Contact</a>
                     </li>
                     <li>
-                        <a href="account-page.php" class="text-white">Home</a>
+                        <a href="account-page.php" class="text-white">Account page</a>
                     </li>
                     <li>
-                        <a href="cart.php" class="text-white">Home</a>
+                        <a href="cart.php" class="text-white">Cart</a>
                     </li>
                 </ul>
             </div>
@@ -395,6 +373,7 @@ if (isset($_POST['checkout'])) {
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+
 
 
 <script src="./includes/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>

@@ -62,13 +62,13 @@
             <a href="index.php" class="text-white">Home</a>
           </li>
           <li>
-            <a href="contact.php" class="text-white">Home</a>
+            <a href="contact.php" class="text-white">Contact</a>
           </li>
           <li>
-            <a href="account-page.php" class="text-white">Home</a>
+            <a href="account-page.php" class="text-white">Account page</a>
           </li>
           <li>
-            <a href="cart.php" class="text-white">Home</a>
+            <a href="cart.php" class="text-white">Cart</a>
           </li>
         </ul>
       </div>

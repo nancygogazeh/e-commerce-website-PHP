@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 04, 2022 at 02:30 PM
+-- Generation Time: Oct 05, 2022 at 10:38 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,21 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `e-commerce-website-php`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart_items`
---
-
-CREATE TABLE `cart_items` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -103,28 +88,6 @@ CREATE TABLE `contact_us` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discount`
---
-
-CREATE TABLE `discount` (
-  `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  `description` int(11) NOT NULL,
-  `discount_percent` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `discount`
---
-
-INSERT INTO `discount` (`id`, `name`, `description`, `discount_percent`, `created_at`, `modified_at`) VALUES
-(1, 187, 15, 18, '2012-10-12 15:16:41', '2014-10-01 15:16:41');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `order_details`
 --
 
@@ -166,21 +129,6 @@ CREATE TABLE `order_items` (
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `amount`, `created_at`, `modified_at`) VALUES
 (9, 12, 7, 1, '2022-10-04 14:31:01', '2022-10-04 14:31:01'),
 (10, 13, 7, 1, '2022-10-04 14:31:32', '2022-10-04 14:31:32');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment_details`
---
-
-CREATE TABLE `payment_details` (
-  `id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `status` varchar(55) NOT NULL DEFAULT 'Pending',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `modified_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -270,14 +218,6 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `a
 --
 
 --
--- Indexes for table `cart_items`
---
-ALTER TABLE `cart_items`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -296,12 +236,6 @@ ALTER TABLE `contact_us`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `discount`
---
-ALTER TABLE `discount`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
@@ -315,13 +249,6 @@ ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`);
-
---
--- Indexes for table `payment_details`
---
-ALTER TABLE `payment_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `payment_details_ibfk_1` (`order_id`);
 
 --
 -- Indexes for table `products`
@@ -342,12 +269,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `cart_items`
---
-ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -366,12 +287,6 @@ ALTER TABLE `contact_us`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `discount`
---
-ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
@@ -382,12 +297,6 @@ ALTER TABLE `order_details`
 --
 ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `payment_details`
---
-ALTER TABLE `payment_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -406,13 +315,6 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `cart_items`
---
-ALTER TABLE `cart_items`
-  ADD CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
@@ -424,12 +326,6 @@ ALTER TABLE `order_details`
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `payment_details`
---
-ALTER TABLE `payment_details`
-  ADD CONSTRAINT `payment_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`
