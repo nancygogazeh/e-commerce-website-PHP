@@ -1,6 +1,15 @@
 <?php
 include('includes/header.php');
-
+session_start();
+if (isset($_SESSION['Role'])) {
+  if ($_SESSION['Role'] !== 'Admin') {
+    header('Location:./404.php');
+  }
+} else {
+  if ($_SESSION['Role'] !== 'Admin') {
+    header('Location:./404.php');
+  }
+}
 
 
 
@@ -198,9 +207,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-                                        //  echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
-                                        //  echo '<td> <a href="update.php?id=' . $row['id'] . '"> <span class="fa fa-eye"></span></a></td>';
-                                        //  echo '<td> <a href="delete.php?id=' . $row['id'] . '" ><span class="fa fa-trash"></span></a></td>';
+                    //  echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
+                    //  echo '<td> <a href="update.php?id=' . $row['id'] . '"> <span class="fa fa-eye"></span></a></td>';
+                    //  echo '<td> <a href="delete.php?id=' . $row['id'] . '" ><span class="fa fa-trash"></span></a></td>';
 
                     echo "</tr>";
                   }

@@ -1,5 +1,15 @@
 <?php
 include('includes/header.php');
+session_start();
+if (isset($_SESSION['Role'])) {
+  if ($_SESSION['Role'] !== 'Admin') {
+    header('Location:./404.php');
+  }
+} else {
+  if ($_SESSION['Role'] !== 'Admin') {
+    header('Location:./404.php');
+  }
+}
 ?>
 
 <?php
@@ -110,9 +120,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="mb-3">
             <label for="role" class="form-label">Role</label> <br>
             <select class="form-control" name="role" id="id">
-                <option value="" hidden>--Choose Role--</option>
-                <option value="user">User</option>
-                <option value="Admin">Admin</option>
+              <option value="" hidden>--Choose Role--</option>
+              <option value="user">User</option>
+              <option value="Admin">Admin</option>
             </select>
           </div>
 
@@ -120,65 +130,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 
         <?php
-          if(isset($_POST['username']))
-          {
-            $username = $_POST['username'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $pass = $_POST['pass'];
-            $email = $_POST['email'];
-            $address = $_POST['address'];
-            $tel = $_POST['telephone'];
-            $created = date('Y-m-d h:i:s A');
-            $lastmod = date('Y-m-d h:i:s A');
-            $role = $_POST['role'];
+        if (isset($_POST['username'])) {
+          $username = $_POST['username'];
+          $fname = $_POST['fname'];
+          $lname = $_POST['lname'];
+          $pass = $_POST['pass'];
+          $email = $_POST['email'];
+          $address = $_POST['address'];
+          $tel = $_POST['telephone'];
+          $created = date('Y-m-d h:i:s A');
+          $lastmod = date('Y-m-d h:i:s A');
+          $role = $_POST['role'];
 
-            if(mysqli_connect_error())
-            {
-              die('Connection Error('. mysqli_connect_errno().')'. mysqli_connect_error());
-            }
-            else
-            {
-              $SELECT = "SELECT email FROM users WHERE email = ? LIMIT 1";
-              $INSERT = "INSERT INTO users (username, password, first_name, last_name, address, telephone, email, created_at, modified_at, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            }
-
-             // Prepare Statement
-             $stmt = $conn->prepare($SELECT);
-             $stmt->bind_param("s", $email);
-             $stmt->execute();
-             $stmt->bind_result($email);
-             $stmt->store_result();
-             $rnum = $stmt->num_rows;
-
-             if($rnum==0)
-              {
-                $stmt->close();
-
-                $stmt = $conn->prepare($INSERT);
-                $stmt->bind_param("ssssssssss", $username, $pass, $fname, $lname, $address, $tel, $email, $created, $lastmod, $role);
-                $stmt->execute();
-
-                ?>
-                  <script>
-                      window.alert("Registered Successfully");
-                      window.location.href = "userspanel.php";
-                  </script>
-                <?php
-              }
-              else 
-              {
-                  ?>
-                  <script>
-                      window.alert("Someone already have with this email, please Try an different email");
-                      setTimeout(function(){ window.location.href = "userspanel.php"; }, 2000);           
-                  </script>
-
-                  <?php
-              } 
-              $stmt->close();
-              $conn->close();
+          if (mysqli_connect_error()) {
+            die('Connection Error(' . mysqli_connect_errno() . ')' . mysqli_connect_error());
+          } else {
+            $SELECT = "SELECT email FROM users WHERE email = ? LIMIT 1";
+            $INSERT = "INSERT INTO users (username, password, first_name, last_name, address, telephone, email, created_at, modified_at, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
           }
+
+          // Prepare Statement
+          $stmt = $conn->prepare($SELECT);
+          $stmt->bind_param("s", $email);
+          $stmt->execute();
+          $stmt->bind_result($email);
+          $stmt->store_result();
+          $rnum = $stmt->num_rows;
+
+          if ($rnum == 0) {
+            $stmt->close();
+
+            $stmt = $conn->prepare($INSERT);
+            $stmt->bind_param("ssssssssss", $username, $pass, $fname, $lname, $address, $tel, $email, $created, $lastmod, $role);
+            $stmt->execute();
+
+        ?>
+            <script>
+              window.alert("Registered Successfully");
+              window.location.href = "userspanel.php";
+            </script>
+          <?php
+          } else {
+          ?>
+            <script>
+              window.alert("Someone already have with this email, please Try an different email");
+              setTimeout(function() {
+                window.location.href = "userspanel.php";
+              }, 2000);
+            </script>
+
+        <?php
+          }
+          $stmt->close();
+          $conn->close();
+        }
         ?>
 
         <!-- Content Row -->
@@ -238,7 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $email = $row['email'];
                     $address = $row['address'];
                     $tel = $row['telephone'];
-                   // $discount_id  = $row['discount_id'];
+                    // $discount_id  = $row['discount_id'];
                     $created_at = $row['created_at'];
                     $modified_at = $row['modified_at'];
                     $role = $row['role'];
@@ -253,9 +258,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td> $created_at</td>
                             <td> $modified_at</td>
                             <td> $role</td>";
-                   //echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
-                  echo '<td> <a href="update.php?id=' . $row['id'] . '"> <img src="./images/icons8-pencil-24.png"/></a></td>';
-                  echo '<td> <a href="delete.php?id=' . $row['id'] . '" onclick="return confirm(\'Are you sure you want to delete this User?\')"><span class="fa fa-trash"></span></a></td>';
+                    //echo ' <td> <a href="read.php?id=' . $row['id'] . '" ><span class="fa fa-eye"></span></a> </td>';
+                    echo '<td> <a href="update.php?id=' . $row['id'] . '"> <img src="./images/icons8-pencil-24.png"/></a></td>';
+                    echo '<td> <a href="delete.php?id=' . $row['id'] . '" onclick="return confirm(\'Are you sure you want to delete this User?\')"><span class="fa fa-trash"></span></a></td>';
 
                     echo "</tr>";
                   }

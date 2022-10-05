@@ -104,7 +104,7 @@ if (isset($_SESSION['login'])) {
     </section>
 
     <?php
-    print_r($_SESSION);
+
     include "./includes/footer.php";
 
     ?>
