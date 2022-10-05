@@ -8,12 +8,16 @@ include('includes/header.php');
         <?php include('./includes/sidebar.php');?>
         <?php include('./includes/content.php');?>
     </div>
-    <!-- Scroll to Top Button-->
+
+  
+    
+    
+ 
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
+   
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -32,4 +36,5 @@ include('includes/header.php');
             </div>
         </div>
     </div>
+    
 <?php include('./includes/footer.php');?>
