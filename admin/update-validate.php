@@ -3,11 +3,11 @@ include("./includes/connect.php");
 session_start();
 if (isset($_SESSION['Role'])) {
   if ($_SESSION['Role'] !== 'Admin') {
-    header('Location:./404.php');
+    header('Location:./403.php');
   }
 } else {
   if ($_SESSION['Role'] !== 'Admin') {
-    header('Location:./404.php');
+    header('Location:./403.php');
   }
 }
 if (isset($_POST['username'])) {

@@ -13,7 +13,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>404 - Page not found</title>
+    <title>403  -  Forbidden response</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,8 +44,8 @@ session_start();
 
                     <!-- 404 Error Text -->
                     <div class="text-center">
-                        <div class="error mx-auto" data-text="404">404</div>
-                        <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                        <div class="error mx-auto" data-text="403 ">403 </div>
+                        <p class="lead text-gray-800 mb-5">Forbidden response</p>
                         <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
                         <a href="../index.php">&larr; Back to website</a>
                     </div>
@@ -60,7 +60,7 @@ session_start();
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Baghdad 2022</span>
                     </div>
                 </div>
             </footer>
