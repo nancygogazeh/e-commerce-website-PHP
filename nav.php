@@ -35,7 +35,7 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+      <a class="navbar-brand mt-2 mt-lg-0" href="index.php">
         <img class="rounded-circle"
             height="35"
           src="./image/bookstore.png"
@@ -47,16 +47,16 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Baghdad</a>
+          <a class="nav-link" href="index.php">Baghdad</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="store.php">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact-us</a>
+          <a class="nav-link" href="contact.php">Contact-us</a>
         </li>
       </ul>
       <!-- Left links -->

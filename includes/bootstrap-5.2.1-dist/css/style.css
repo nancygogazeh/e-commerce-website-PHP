@@ -1,44 +1,50 @@
 
 /*home style*/
   /* Centered text */
- .container .top-left{
+ .container-fluid .top-left{
     color: white;
-    font-size:300%;
+    margin: 0;
     font-family: 'Segoe';
     font-weight: bolder;
-    /* position: absolute; */
-  
- 
+    height: 400px;
+    font-size: 26px;
+    background-image: url('../../../image/1.jpg');
+    background-size: 100% 100%;
     text-align: center;
-    transform: translate(2%, -150%);
+    width: 100%;
+    display: flex;
+        justify-content: center;
+    flex-direction: column;
   } 
 
-
+  .banner {
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-weight: bolder;
+    height: 500px;
+    background-image: url('../../../image/1.jpg');
+    background-size: 100% 100%;
+    display: flex;
+   
+    justify-content: center;
+    flex-direction: column;
+  }
+  .banner  h1{
+    font-weight: bolder;
+  }
   
  
 
-  .top-lft {
-    position: absolute;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    top: 8px;
-    left: 16px;
-    color: white;
-    top: 40%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-  }
-   
+
 
 .centered{
-
+    
     color: white;
-    font-size:100%;
+    font-size: 26px;
     font-family: 'Segoe';
     font-weight: bolder;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
   }
 
 
@@ -186,19 +192,14 @@
 }
 @media (max-width: 400px) {
    
-    .top-lft{
-    top: 42%;
-    left: 50%;
 
-}
 
 
   /*checkout style*/
   /* Responsive layout - when the screen is less than 500px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
   @media (max-width: 800px) {
-    .row {
-      flex-direction: column-reverse;
-    }
+  
+
     .col-25 {
       margin-bottom: 20px;
     }
@@ -207,6 +208,7 @@
     font-family: Arial;
     font-size: 17px;
     padding: 8px;
+    margin: 0;
   }
   
   * {
@@ -603,4 +605,145 @@ table {
     color: #fff;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Alice&family=Bree+Serif&family=Josefin+Sans&family=K2D&family=Open+Sans&family=Poppins&family=Roboto&family=Tangerine:wght@400;700&display=swap");
+}
+#profileHome {
+    width: 100%;
+}
+
+.profilebackImage {
+    width: 100%;
+    height: 50vh;
+    background: url('../../../image/user.png');
+    background-size: cover;
+    background-position: center;
+}
+.first-book{
+    width: 100%;
+    height: 300px;
+    background: url('../../../image/first-book.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.children-books{
+    width: 100%;
+    height: 300px;
+    background: url('../../../image/child-books.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.third-book{
+    width: 100%;
+    height: 300px;
+    background: url('../../../image/thirdbook.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profileImgContent {
+    position: relative;
+    top: 50%;
+}
+.profilebackImage .title
+{
+    text-align: center;
+}
+
+.profilebackImage .title h1 {
+    color: #fff;
+    font-size: 5rem;
+
+}
+
+.profilebackImage .subTitle {
+    text-align: center;
+}
+
+.profilebackImage .subTitle h4 {
+    color: #fff;
+    font-size: 14px;
+}
+
+.profileDetailsContent {
+    padding: 20px;
+}
+
+.pDataContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.pDataContainer .leftSide {
+    margin: 30px 0;
+    width: 20%;
+}
+
+.pDataContainer .leftSide .container {
+    box-shadow: 0 0 4px #dfdfdf;
+}
+
+.pDataContainer .leftSide .container .row {
+    border-bottom: 1px solid #dfdfdf;
+    padding: 8px 4px;
+    transition: 350ms ease-in-out;
+    cursor: pointer;
+}
+
+.pDataContainer .leftSide .container .row:last-child {
+    border-bottom: 0;
+}
+.pDataContainer .leftSide .container .row a {
+    color: #000;
+    transition: 350ms ease-in-out;
+}
+
+.pDataContainer .leftSide .container .row a:hover {
+    text-decoration: none;
+}
+
+.pDataContainer .leftSide .container .row:hover {
+    background: rgba(233, 255, 35, 0.5);
+    transition: 350ms ease-in-out;
+}
+
+.pDataContainer .rightSide {
+    width: 80%;
+}
+
+.rightContainer {
+    padding: 10px 15px;
+    width: 95%;
+    margin: 0 auto;
+}
+.pDataContainer .rightSide .rightHeading {
+    padding: 35px 20px;
+}
+
+.pDataContainer .rightSide .rightHeading h1 {
+    font-size: 20px;
+}
+
+.pDataContainer .rightSide .rightPara {
+    padding: 0 20px;
+    width: 80%;
+}
+
+.rightContainer table {
+    margin: 20px 0;
+    width: 100%;
+    border: 1px solid #dfdfdf;
+    border-collapse: collapse;
+}
+
+.rightContainer table tr td {
+    border: 1px solid #dfdfdf;
+    padding: 10px 15px;
+}

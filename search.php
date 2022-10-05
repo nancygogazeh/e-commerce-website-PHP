@@ -113,7 +113,26 @@ if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
                             </button>
                         </form>
                     </div>
-
+                    <div class="aside">
+                        <h3 class="aside-title">Price</h3>
+                        <div class="price-filter">
+                            <div id="price-slider"></div>
+                            <div class="input-number price-min">
+                                <form action="./price_filter.php" method="get">
+                                    <input id="price-min" type="number" name="minPrice">
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
+                            </div>
+                            <span>-</span>
+                            <div class="input-number price-max">
+                                <input id="price-max" type="number" name="maxPrice">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                            <button class="search-btn" type="submit" name="price">filter</button>
+                            </form>
+                        </div>
+                    </div>
                     <?php include "./includes/category_widget.php"; ?>
                 </div>
             </div>
@@ -121,17 +140,10 @@ if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
 
                     <?php
-                    if (isset($_GET['price'])) {
-                        $min = 1;
-                        $max = 1000;
-                        if (isset($_GET['minPrice'])) {
-                            $min = $_GET['minPrice'];
-                            $max = $_GET['maxPrice'];
-                        }
-
-                        $query = "SELECT * FROM products where price BETWEEN $min AND $max
-                        ";
-                        $query_run = mysqli_query($conn, $query);
+                    if (isset($_GET['search'])) {
+                        $filtervalues = $_GET['search'];
+                        $query = "SELECT * FROM products WHERE CONCAT(name,price) LIKE '%$filtervalues%' ";
+                        $query_run = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($query_run) > 0) {
                             while ($row = $query_run->fetch_assoc()) {
@@ -317,41 +329,5 @@ if (isset($_POST['addproduct']) && isset($_SESSION['cart'])) {
                 height: 150px;
             }
         </style>
-        <script>
-            $(document).ready(function() {
-                filter_data();
 
-                function filter_data() {
-                    $('.filter_data').html('<div id="loading" style="" ></div>');
-                    var action = 'fetch_data';
-                    var minimum_price = $('#hidden_minimum_price').val();
-                    var maximum_price = $('#hidden_maximum_price').val();
-                    $.ajax({
-                        url: "fetch_data.php",
-                        method: "POST",
-                        data: {
-                            action: action,
-                            minimum_price: minimum_price,
-                            maximum_price: maximum_price
-                        },
-                        success: function(data) {
-                            $('.filter_data').html(data);
-                        }
-                    });
-                }
-                $('#price_range').slider({
-                    range: true,
-                    min: 50,
-                    max: 5000,
-                    values: [50, 5000],
-                    step: 50,
-                    stop: function(event, ui) {
-                        $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-                        $('#hidden_minimum_price').val(ui.values[0]);
-                        $('#hidden_maximum_price').val(ui.values[1]);
-                        filter_data();
-                    }
-                });
-            });
-        </script>
 </body>

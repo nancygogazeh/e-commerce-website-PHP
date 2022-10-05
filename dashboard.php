@@ -1,12 +1,8 @@
 <?php
-
-
-include '../includes/dbcon.php';
-include('./includes/navbar-top.php');
+session_start();
+include './includes/dbcon.php';
 
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -22,17 +18,7 @@ include('./includes/navbar-top.php');
 <title>Document</title>
 </head>
 <body>
-
-
-     <!-- Begin Page Content -->
-     <div class="container-fluid bg-white">
-
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     
-</div>
-
 
 
 
@@ -134,13 +120,12 @@ include('./includes/navbar-top.php');
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Summation Of Payment
                         <?php $query = "SELECT sum(amount) as `payment` from payment_details";
                                 $res = mysqli_query($conn, $query);
                                 $data = mysqli_fetch_array($res);
 
                                 echo "Sum Of Payment :" . $data['payment'] . "<br>"; ?></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">148</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -164,21 +149,27 @@ include('./includes/navbar-top.php');
 
 
 
-
-       
-
-
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Admin Page 2022</span>
-                </div>
-            </div>
+</body>
+</html>
 
 
 
-            
-        </footer>
-        <!-- End of Footer -->
 
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
